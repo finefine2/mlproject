@@ -8,7 +8,8 @@ from sklearn.model_selection import train_test_split
 
 # 이거 중요하다는데?
 from dataclasses import dataclass
-
+from src.components.data_transformation import DataTransformation
+from src.components.data_transformation import DataTransformationConfig
 # 이 decorator는 매우 중요함 
 # 바로 변수를 지정할 수 있기때문에
 @dataclass 
@@ -48,4 +49,7 @@ class DataIngestion:
         
 if __name__ == "__main__": 
     obj = DataIngestion() 
-    obj.initiate_data_ingestion() 
+    train_data,test_data=obj.initiate_data_ingestion()
+    
+    data_transformation=DataTransformation() 
+    data_transformation.initiate_data_transformation(train_data,test_data) 
